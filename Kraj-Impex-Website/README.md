@@ -16,7 +16,7 @@ To preview on your computer, double-click `index.html`.
 
 | File | Page |
 |---|---|
-| `index.html` | Home: Koh-i-Noor hero, dossier, crystal tiles, **3D diamond-set watch under a spotlight**, collections, statement |
+| `index.html` | Home: Koh-i-Noor hero, dossier, crystal tiles, **3D fancy-colour diamond cuff watch on a marble plinth**, collections, statement |
 | `collections.html` | "Kraj Impex Diamonds": Natural and Laboratory-grown collections (click to open; `#natural` / `#lab-grown`), 5 sample stones each with a 360° detail view, shapes, access code |
 | `lab-grown.html` | **Scroll-driven 3D: how a diamond is grown (CVD), in 8 steps** |
 | `craft.html` | Brilliance / fire / scintillation, rough-to-record steps |
@@ -28,7 +28,7 @@ To preview on your computer, double-click `index.html`.
 - `assets/css/main.css`: all styles and design tokens (`:root`)
 - `assets/js/main.js`: header, menu, scroll reveals, hero sparkle, crystal tiles, enquiry forms and tabs
 - `assets/js/three-kit.js`: loads Three.js and shared 3D helpers, including the diamond shader
-- `assets/js/watch3d.js`: the diamond-set watch (an original, unbranded design; the section shows text only without WebGL)
+- `assets/js/watch3d.js`: the fancy-colour diamond cuff watch (an original, unbranded design; the section shows text only without WebGL)
 - `assets/js/collection.js`: the sample stones (data at the top of the file: edit `STONES` to list real stones), their cut geometry and the 360° viewer
 - `assets/js/rubies3d.js`: the single antique cushion-cut red diamond behind "Rarity is the standard" (CSS ruby gradient without WebGL)
 - `assets/js/growth.js`: the lab-grown sequence (falls back to a readable list without WebGL)
@@ -47,7 +47,7 @@ A hidden field quietly discards most spam bots.
 
 ## Before going live
 
-1. **Collection stones**: the listings are illustrative. Edit `STONES` in `assets/js/collection.js` to list real stones and report numbers (and the `Example` badge if you no longer want it).
+1. **Collection stones**: the listings are illustrative. Edit `STONES` in `assets/js/collection.js` to list real stones and report numbers (and the `Coming soon` badge once stones are available).
 2. **Dossier figures** on the home page are an example record.
 3. **Crystal tiles** on Home and Craft are drawn; swap the `<canvas class="lt">` elements for photographs when you have them.
 4. Once the domain is live, add it to link previews (`og:url`, and an `og:image` with an absolute address).
