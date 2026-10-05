@@ -50,4 +50,4 @@ A hidden field quietly discards most spam bots.
 1. **Collection stones**: the listings are illustrative. Edit `STONES` in `assets/js/collection.js` to list real stones and report numbers (and the `Coming soon` badge once stones are available).
 2. **Dossier figures** on the home page are an example record.
 3. **Crystal tiles** on Home and Craft are drawn; swap the `<canvas class="lt">` elements for photographs when you have them.
-4. Once the domain is live, add it to link previews (`og:url`, and an `og:image` with an absolute address).
+4. If you move to your own domain, replace `https://krajimpex.github.io/` in the page heads, `sitemap.xml` and `robots.txt`.
