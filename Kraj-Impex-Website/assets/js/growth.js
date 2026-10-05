@@ -230,7 +230,7 @@
       r.toneMappingExposure=.9+.12*fin;
       S.composer.render();
     }
-    VD3.loop(sec.querySelector('.g-stage'),frame);
+    VD3.loop(sec.querySelector('.g-stage'),frame,S);
     sec.classList.add('ready');
   }
 })();

@@ -50,7 +50,7 @@
       holder.rotation.y=still?0:Math.sin(t*.12)*.06;
       mat.uniforms.uRot.value=still?.4:.4+Math.sin(t*.05)*.35;
       S.composer.render();
-    });
+    },S);
     sec.classList.add('gl');
   }
 })();

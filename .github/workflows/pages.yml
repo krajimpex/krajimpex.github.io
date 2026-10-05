@@ -21,17 +21,18 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 20
+      - uses: actions/checkout@v5
       - name: Build site
         working-directory: Kraj-Impex-Website
         run: |
           node build.js
           touch dist/.nojekyll
-          # 404.html uses root-relative links; GitHub Pages serves the site under /<repo>/
-          sed -i 's#\(href\|src\)="/#\1="/${{ github.event.repository.name }}/#g' dist/404.html
+          # 404.html uses root-relative links. A repo named <owner>.github.io is served at the domain root;
+          # any other repo is served under /<repo>/, so the links need that prefix.
+          repo="${{ github.event.repository.name }}"
+          if [ "${repo,,}" != "${GITHUB_REPOSITORY_OWNER,,}.github.io" ]; then
+            sed -i "s#\\(href\\|src\\)=\"/#\\1=\"/$repo/#g" dist/404.html
+          fi
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
