@@ -22,15 +22,17 @@
   var mobile=function(){return Math.min(window.innerWidth,window.innerHeight)<700||(window.matchMedia&&window.matchMedia('(pointer: coarse)').matches);};
   function setup(K,canvas,opts){
     var T=K.THREE;opts=opts||{};
-    var r=new T.WebGLRenderer({canvas:canvas,antialias:!mobile(),powerPreference:'high-performance'});
-    r.setPixelRatio(Math.min(window.devicePixelRatio||1,mobile()?1.35:1.75));
+    // the whole post-processing chain runs at this pixel ratio, so it is the main cost of every scene
+    var pr=Math.min(window.devicePixelRatio||1,mobile()?1.25:1.5),minPr=Math.min(pr,mobile()?.7:.9);
+    var r=new T.WebGLRenderer({canvas:canvas,antialias:false,powerPreference:'high-performance'});
+    r.setPixelRatio(pr);
     r.toneMapping=T.ACESFilmicToneMapping;r.toneMappingExposure=opts.exposure||1;
     r.outputColorSpace=T.SRGBColorSpace;r.setClearColor(opts.clear!=null?opts.clear:0x000000,1);
     var pm=new T.PMREMGenerator(r),env=pm.fromScene(new K.RoomEnvironment(),.04).texture;pm.dispose();
     var scene=new T.Scene();scene.environment=env;
     var camera=new T.PerspectiveCamera(opts.fov||32,1,.05,60);
     // multisampled target: clean, anti-aliased edges through post-processing
-    var rt=new T.WebGLRenderTarget(1,1,{type:T.HalfFloatType,samples:mobile()?2:4});
+    var rt=new T.WebGLRenderTarget(1,1,{type:T.HalfFloatType,samples:mobile()||pr>1.2?2:4});
     var comp=new K.EffectComposer(r,rt);comp.addPass(new K.RenderPass(scene,camera));
     var bloom=new K.UnrealBloomPass(new T.Vector2(256,256),opts.bloom||.6,opts.bloomRadius||.4,opts.threshold||.82);
     // keep the glow tight around highlights; the widest blur levels otherwise wash dark grounds to grey
@@ -43,6 +45,13 @@
       if(opts.onResize)opts.onResize(w,h);
     }
     size();window.addEventListener('resize',function(){clearTimeout(size.t);size.t=setTimeout(size,120);});
+    // adaptive quality: if frames run slower than ~40 fps, render at a lower pixel ratio until they don't
+    var draw=comp.render.bind(comp),prev=0,acc=0,n=0;
+    comp.render=function(dt){
+      var now=performance.now(),d=now-prev;prev=now;
+      if(d>0&&d<120){acc+=d;if(++n>=40){if(acc/n>25&&pr>minPr){pr=Math.max(minPr,pr-.2);r.setPixelRatio(pr);comp.setPixelRatio(pr);size();}acc=n=0;}}
+      draw(dt);
+    };
     return {renderer:r,scene:scene,camera:camera,composer:comp,bloom:bloom,resize:size};
   }
   // runs frame(t, dt) only while el is on screen and the tab is visible

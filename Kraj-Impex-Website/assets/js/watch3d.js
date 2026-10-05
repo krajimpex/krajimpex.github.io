@@ -105,7 +105,7 @@
       M.compose(pos,Q,new V(gm.s,gm.s,gm.s));inst.setMatrixAt(i,M);
       M.compose(pos,Q,new V(gm.s*1.07,gm.s*1.07,gm.s*1.07));cups.setMatrixAt(i,M);
     });
-    cups.castShadow=true;watch.add(inst,cups);
+    watch.add(inst,cups);                                   // settings cast no shadow: too small to see, costly to draw
 
     /* ---------- one spotlight from above ---------- */
     var spot=new T.SpotLight(0xfff5e8,10,14,.28,.65,1.3);spot.position.set(0,4.4,.8);spot.target.position.set(0,-.2,-.2);

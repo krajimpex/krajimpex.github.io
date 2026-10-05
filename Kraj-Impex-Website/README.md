@@ -1,16 +1,16 @@
 # Kraj Impex Diamonds — website
 
-Static site: plain HTML, CSS and JavaScript, no build step. The 3D scenes use Three.js, loaded from the jsDelivr CDN (needs an internet connection). Upload the folder to any static host (Netlify, Cloudflare Pages, Vercel, cPanel).
+Static site: plain HTML, CSS and JavaScript. The 3D scenes use Three.js, loaded from the jsDelivr CDN. It is published with GitHub Pages at **https://krajimpex.github.io/**.
 
-## Preview locally
+## Editing the site
 
-Double-click `index.html`, or run:
+Everything lives in this `Kraj-Impex-Website` folder on the `main` branch. Any change saved to `main` republishes the site automatically within about a minute (progress shows in the repository's **Actions** tab).
 
-```bash
-node serve.js
-```
+- **Change text on a page:** open the page's `.html` file on GitHub, click the pencil icon (**Edit this file**), change the words between the tags, then **Commit changes**.
+- **Replace an image:** open `assets/img`, choose **Add file → Upload files**, and upload the new image with the same file name.
+- **Bigger changes:** press `.` on the repository page to open the full editor in your browser, or clone the repository and edit on your computer.
 
-Then open http://localhost:5173.
+To preview on your computer, double-click `index.html`.
 
 ## Pages
 
@@ -34,42 +34,16 @@ Then open http://localhost:5173.
 - `assets/js/growth.js`: the lab-grown sequence (falls back to a readable list without WebGL)
 - `assets/img/koh-i-noor.png`: hero stone
 
-After editing a CSS or JS file, raise the `?v=10` number in the HTML `<script>`/`<link>` tags so visitors' browsers fetch the new version.
-
-## Deploying from GitHub (Cloudflare Pages)
-
-This repository holds the source. Cloudflare Pages builds and publishes it on every change.
-
-1. Cloudflare dashboard → **Workers & Pages** → **Create** → **Pages** → **Connect to Git** → choose this repository.
-2. Build settings: **Framework preset** None · **Build command** `node build.js` · **Build output directory** `dist`.
-3. **Save and Deploy**, then **Custom domains** → add your domain.
-
-To update the site, change files in GitHub (edit in the browser, or upload new versions); Cloudflare redeploys automatically within a minute or two.
-## Publishing by upload (alternative)
-
-```bash
-node build.js
-```
-
-1. Cloudflare dashboard → **Workers & Pages** → **Create** → **Pages** → **Upload assets**.
-2. Name the project (for example `krajimpex`) and upload the **dist** folder.
-3. **Custom domains** → add your domain; Cloudflare issues the certificate.
-4. To update later: run `node build.js` again and upload **dist** as a new deployment.
-
-`_headers` (security policy, caching) and `404.html` are picked up automatically.
+After editing a CSS or JS file, raise the `?v=11` number in the HTML `<script>`/`<link>` tags so visitors' browsers fetch the new version.
 
 ### Enquiry forms
 
 Open `assets/js/main.js` and find `FORM_ENDPOINT` near the forms section.
 
 - **Left empty** (as delivered): sending an enquiry opens WhatsApp with the message already written, addressed to +91 98201 24336. Make sure that number uses WhatsApp, or change `WHATSAPP`.
-- **To receive enquiries by email**: create a free form at formspree.io, copy its address (`https://formspree.io/f/…`) into `FORM_ENDPOINT`, raise the `?v=` number, rebuild and upload. The security policy already allows formspree.io.
+- **To receive enquiries by email**: create a free form at formspree.io, copy its address (`https://formspree.io/f/…`) into `FORM_ENDPOINT`, raise the `?v=` number and commit.
 
 A hidden field quietly discards most spam bots.
-
-### Security
-
-`_headers` sets a strict Content-Security-Policy (this site, Google Fonts and the jsDelivr CDN for Three.js only; the one inline script is allowed by its hash), HSTS, no framing, no MIME sniffing, a strict referrer policy and a locked-down permissions policy. If you ever edit the import map in the pages, update its `sha256-…` hash in `_headers`.
 
 ## Before going live
 

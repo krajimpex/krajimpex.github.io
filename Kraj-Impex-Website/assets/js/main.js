@@ -87,7 +87,8 @@
     var loc=gl.getAttribLocation(pr,'a');gl.enableVertexAttribArray(loc);gl.vertexAttribPointer(loc,2,gl.FLOAT,false,0,0);
     var uR=gl.getUniformLocation(pr,'uR'),uT=gl.getUniformLocation(pr,'uT'),uL=gl.getUniformLocation(pr,'uL');
     var seed=(+cv.dataset.seed||0)*1.7;
-    function size(){var d=Math.min(1.5,window.devicePixelRatio||1),w=Math.round(cv.clientWidth*d),h=Math.round(cv.clientHeight*d);if(w&&h&&(cv.width!==w||cv.height!==h)){cv.width=w;cv.height=h;gl.viewport(0,0,w,h);}}
+    // the caustics are soft light, so they are drawn at reduced resolution and scaled up by the browser
+    function size(){var d=.6,w=Math.round(cv.clientWidth*d),h=Math.round(cv.clientHeight*d);if(w&&h&&(cv.width!==w||cv.height!==h)){cv.width=w;cv.height=h;gl.viewport(0,0,w,h);}}
     function paint(t){size();if(!cv.width)return;gl.uniform2f(uR,cv.width,cv.height);gl.uniform1f(uT,t+seed);
       gl.uniform2f(uL,.5+.08*Math.sin(t*.05+seed),.62+.05*Math.sin(t*.07));gl.clearColor(0,0,0,0);gl.clear(gl.COLOR_BUFFER_BIT);gl.drawArrays(gl.TRIANGLES,0,3);}
     var last=-1;whileVisible(cv,function(t){if(still||t-last>.033){last=t;paint(still?12:t);}});
@@ -98,7 +99,7 @@
   function crystalTile(cv){
     var o=LT[+cv.dataset.k],T={};
     function build(){
-      var d=DPR(),w=cv.clientWidth,h=cv.clientHeight;if(!w||!h)return;
+      var d=Math.min(1.5,DPR()),w=cv.clientWidth,h=cv.clientHeight;if(!w||!h)return;
       cv.width=Math.round(w*d);cv.height=Math.round(h*d);T.c=cv.getContext('2d');T.w=w;T.h=h;T.d=d;
       var rnd=rng(3+(+cv.dataset.k)*17),i,r,a;
       var fx=o.fx*w,fy=o.fy*h,rx=o.rx*w,ry=o.ry*w,ch=o.h*h;T.fx=fx;T.fy=fy;T.rx=rx;T.ry=ry;T.ch=ch;
@@ -139,7 +140,7 @@
       c.globalAlpha=1;
       c.globalCompositeOperation='source-over';
     }
-    build();whileVisible(cv,paint);
+    var last=-1;build();whileVisible(cv,function(t){if(still||t-last>.033){last=t;paint(t);}});   // 30 fps is plenty for slow drift
     window.addEventListener('resize',debounce(function(){build();if(still)paint(1.4);},150));
   }
   document.querySelectorAll('canvas.lt').forEach(crystalTile);
