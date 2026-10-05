@@ -43,8 +43,8 @@
     var grid=panels[k==='lab'?'lab':'natural']&&panels[k==='lab'?'lab':'natural'].querySelector('.stones');if(!grid)return;
     STONES[k].forEach(function(s){
       var b=document.createElement('button');b.type='button';b.className='stone';b.dataset.id=s.id;
-      b.setAttribute('aria-label',s.ct+' carat '+s.name+', '+spec(s)+', '+s.lab+(k==='lab'?', laboratory-grown':', natural')+'. View details');
-      b.innerHTML='<span class="stone-img"><canvas aria-hidden="true"></canvas><span class="sample">Example</span></span>'+
+      b.setAttribute('aria-label',s.ct+' carat '+s.name+', '+spec(s)+', '+s.lab+(k==='lab'?', laboratory-grown':', natural')+'. Coming soon. View details');
+      b.innerHTML='<span class="stone-img"><canvas aria-hidden="true"></canvas><span class="sample">Coming soon</span></span>'+
         '<span class="stone-meta"><span class="stone-name">'+s.ct+' ct '+s.name+'</span><span class="stone-spec">'+spec(s)+'</span>'+
         '<span class="stone-lab">'+s.lab+' report · '+(k==='lab'?'Laboratory-grown':'Natural')+'</span></span>';
       b.addEventListener('click',function(){showStone(s,k);});
@@ -67,7 +67,7 @@
     dlg.querySelector('[data-f=kind]').textContent=k==='lab'?'Laboratory-grown diamond':'Natural diamond';
     var rows=[['Shape',s.name],['Carat weight',s.ct],['Colour',s.color],['Clarity',s.clarity],['Cut',s.cut],['Polish',s.polish],['Symmetry',s.sym],['Fluorescence',s.fl],['Measurements',s.mm+' mm'],['Depth',s.depth+'%'],['Table',s.table+'%']];
     if(s.growth)rows.push(['Growth',s.growth]);
-    rows.push(['Report',s.lab+' (illustrative)'],['Reference',s.id],['Price','In private']);
+    rows.push(['Report',s.lab+' (illustrative)'],['Reference',s.id],['Availability','Coming soon'],['Price','In private']);
     dlg.querySelector('dl').innerHTML=rows.map(function(r){return '<dt>'+r[0]+'</dt><dd>'+r[1]+'</dd>';}).join('');
     dlg.querySelector('[data-f=ask]').href='introduction.html?stone='+encodeURIComponent(s.id+' · '+s.ct+' ct '+s.name+', '+s.color+' '+s.clarity)+'#private';
     if(!dlg.open)dlg.showModal();
