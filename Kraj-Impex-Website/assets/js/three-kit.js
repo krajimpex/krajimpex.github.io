@@ -23,8 +23,8 @@
   function setup(K,canvas,opts){
     var T=K.THREE;opts=opts||{};
     // the whole post-processing chain runs at this pixel ratio, so it is the main cost of every scene
-    var pr=Math.min(window.devicePixelRatio||1,mobile()?1.25:1.5),minPr=Math.min(pr,mobile()?.7:.9);
-    var r=new T.WebGLRenderer({canvas:canvas,antialias:false,powerPreference:'high-performance'});
+    var pr=Math.min(window.devicePixelRatio||1,mobile()?1.35:1.75),minPr=Math.min(pr,mobile()?.75:1);
+    var r=new T.WebGLRenderer({canvas:canvas,antialias:!mobile(),powerPreference:'high-performance'});
     r.setPixelRatio(pr);
     r.toneMapping=T.ACESFilmicToneMapping;r.toneMappingExposure=opts.exposure||1;
     r.outputColorSpace=T.SRGBColorSpace;r.setClearColor(opts.clear!=null?opts.clear:0x000000,1);
@@ -32,7 +32,7 @@
     var scene=new T.Scene();scene.environment=env;
     var camera=new T.PerspectiveCamera(opts.fov||32,1,.05,60);
     // multisampled target: clean, anti-aliased edges through post-processing
-    var rt=new T.WebGLRenderTarget(1,1,{type:T.HalfFloatType,samples:mobile()||pr>1.2?2:4});
+    var rt=new T.WebGLRenderTarget(1,1,{type:T.HalfFloatType,samples:mobile()?2:4});
     var comp=new K.EffectComposer(r,rt);comp.addPass(new K.RenderPass(scene,camera));
     var bloom=new K.UnrealBloomPass(new T.Vector2(256,256),opts.bloom||.6,opts.bloomRadius||.4,opts.threshold||.82);
     // keep the glow tight around highlights; the widest blur levels otherwise wash dark grounds to grey
@@ -45,7 +45,8 @@
       if(opts.onResize)opts.onResize(w,h);
     }
     size();window.addEventListener('resize',function(){clearTimeout(size.t);size.t=setTimeout(size,120);});
-    // adaptive quality: if frames run slower than ~40 fps, render at a lower pixel ratio until they don't
+    // adaptive quality: full resolution wherever the device keeps up; only if frames run slower than ~40 fps
+    // is the pixel ratio lowered, a step at a time, until they don't
     var draw=comp.render.bind(comp),prev=0,acc=0,n=0;
     comp.render=function(dt){
       var now=performance.now(),d=now-prev;prev=now;
@@ -54,14 +55,18 @@
     };
     return {renderer:r,scene:scene,camera:camera,composer:comp,bloom:bloom,resize:size};
   }
-  // runs frame(t, dt) only while el is on screen and the tab is visible
-  function loop(el,frame){
+  // runs frame(t, dt) only while el is on screen and the tab is visible. Given the scene (S from setup), its
+  // shaders are compiled in the background first, so the page never stalls when the scene scrolls into view.
+  function loop(el,frame,S){
     var on=false,raf=0,last=0;
     function tick(ms){var t=ms/1000,dt=Math.min(.05,last?t-last:.016);last=t;frame(t,dt);raf=requestAnimationFrame(tick);}
-    new IntersectionObserver(function(es){var v=es[0].isIntersecting;
-      if(v&&!on){on=true;last=0;raf=requestAnimationFrame(tick);}else if(!v&&on){on=false;cancelAnimationFrame(raf);}
-    },{rootMargin:'120px'}).observe(el);
-    frame(performance.now()/1000,.016);
+    function start(){
+      new IntersectionObserver(function(es){var v=es[0].isIntersecting;
+        if(v&&!on){on=true;last=0;raf=requestAnimationFrame(tick);}else if(!v&&on){on=false;cancelAnimationFrame(raf);}
+      },{rootMargin:'120px'}).observe(el);
+      frame(performance.now()/1000,.016);
+    }
+    if(S&&S.renderer.compileAsync)S.renderer.compileAsync(S.scene,S.camera).then(start,start);else start();
   }
   function rng(seed){return function(){seed=(seed*16807)%2147483647;return seed/2147483647;};}
   function glowTexture(T){

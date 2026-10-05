@@ -145,7 +145,7 @@
       hS.rotation.z=-sc/60*2*PI;hM.rotation.z=-mn/60*2*PI;hH.rotation.z=-hr/12*2*PI;
       r.getDrawingBufferSize(dbs);dMat.uniforms.uS.value=.02*dbs.y/(2*Math.tan(camera.fov*PI/360));dMat.uniforms.uT.value=still?0:t;
       S.composer.render();
-    });
+    },S);
     cv.dataset.mode='3d';
   }
 })();
