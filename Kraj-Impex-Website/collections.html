@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Collections · Kraj Impex Diamonds</title>
+<meta name="description" content="Two collections kept apart: natural diamonds and laboratory-grown diamonds, held to one standard of cut and always declared for what they are.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Kraj Impex Diamonds">
+<meta property="og:title" content="Collections · Kraj Impex Diamonds">
+<meta property="og:description" content="Two collections kept apart: natural diamonds and laboratory-grown diamonds, held to one standard of cut and always declared for what they are.">
+<meta name="twitter:card" content="summary">
+<meta name="theme-color" content="#2c070e">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;1,6..96,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400&family=Playfair+Display:ital,wght@1,800&family=Hanken+Grotesk:wght@300;400;500&display=swap">
+<link rel="stylesheet" href="assets/css/main.css?v=10">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/"}}</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<div class="site-head">
+  <header class="bar">
+    <a class="mark" href="index.html" aria-label="Kraj Impex Diamonds, home">
+      <svg width="50" height="36" viewBox="0 0 180 130" fill="none" stroke="currentColor" stroke-linecap="round" aria-hidden="true"><path d="M8 30 C20 34,32 36,44 42" stroke-width="2.8"/><path d="M14 42 C24 45,34 47,44 52" stroke-width="2" opacity="0.65"/><path d="M20 54 C28 56,36 57,44 60" stroke-width="1.2" opacity="0.35"/><path d="M60 30 L120 30 L140 54 L90 114 L40 54 Z M40 54 L140 54 M74 30 L90 54 L106 30 M64 54 L90 114 L116 54" stroke-width="5" stroke-linejoin="round"/><path d="M172 30 C160 34,148 36,136 42" stroke-width="2.8"/><path d="M166 42 C156 45,146 47,136 52" stroke-width="2" opacity="0.65"/><path d="M160 54 C152 56,144 57,136 60" stroke-width="1.2" opacity="0.35"/></svg>
+      <span class="wm"><b>KRAJ IMPEX</b><small>Diamonds</small></span>
+    </a>
+    <button class="menu-btn" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu"><span></span></button>
+    <nav class="nav" id="site-nav" aria-label="Main">
+      <a href="collections.html" aria-current="page">Collections</a>
+      <a href="lab-grown.html">Lab-grown</a>
+      <a href="craft.html">Craft</a>
+      <a href="house.html">The House</a>
+      <a class="link" href="introduction.html">Request an introduction</a>
+    </nav>
+  </header>
+</div>
+
+<main id="main" class="wrap">
+  <div class="hero short">
+    <canvas class="sparkle" data-seed="4" aria-hidden="true"></canvas>
+    <span class="label">The collections</span>
+    <h1 class="duo rise"><span class="thin"><i>Kraj Impex</i></span><span class="goldline lux-italic"><i>Diamonds</i></span></h1>
+    <p>Two collections, kept apart: natural and laboratory-grown. Choose a room to see stones from it.</p>
+  </div>
+
+  <div class="fire"></div>
+
+  <section class="flush" aria-labelledby="rooms-h">
+    <h2 class="vh" id="rooms-h">Choose a collection</h2>
+    <div class="rooms" style="margin-top:0">
+      <a class="room room-link" href="#natural" data-room="natural" aria-controls="natural" aria-expanded="false" data-reveal>
+        <span class="label">Collection I</span>
+        <h3>Natural diamonds</h3>
+        <p>Mined diamonds of exceptional size, colour and clarity, each with an independent grading report.</p>
+        <ul>
+          <li>An independent grading report with every stone</li>
+          <li>Origin stated as natural on every document</li>
+          <li>Shown one at a time, by appointment</li>
+        </ul>
+        <span class="room-open">View the natural collection <span aria-hidden="true">&rarr;</span></span>
+      </a>
+      <a class="room room-link" href="#lab-grown" data-room="lab" aria-controls="lab-grown" aria-expanded="false" data-reveal style="--i:2">
+        <span class="label">Collection II</span>
+        <h3>Laboratory-grown diamonds</h3>
+        <p>CVD diamonds grown and cut to the same standard, always declared as laboratory-grown.</p>
+        <ul>
+          <li>Cut and polished to the natural collection's standard</li>
+          <li>Declared as laboratory-grown on every document</li>
+          <li>Available to order and to commission</li>
+        </ul>
+        <span class="room-open">View the lab-grown collection <span aria-hidden="true">&rarr;</span></span>
+      </a>
+    </div>
+  </section>
+
+  <section class="collection" id="natural" hidden aria-labelledby="natural-h">
+    <div class="collection-head">
+      <div><span class="label">Kraj Impex Diamonds &middot; Collection I</span><h2 id="natural-h">Natural diamonds</h2></div>
+      <a class="link" href="#lab-grown" data-room="lab">Laboratory-grown &rarr;</a>
+    </div>
+    <div class="stones"></div>
+    <p class="note">Illustrative listings. The collection changes often; your advisor will share the stones available today, each with its grading report.</p>
+  </section>
+
+  <section class="collection" id="lab-grown" hidden aria-labelledby="lab-h">
+    <div class="collection-head">
+      <div><span class="label">Kraj Impex Diamonds &middot; Collection II</span><h2 id="lab-h">Laboratory-grown diamonds</h2></div>
+      <a class="link" href="#natural" data-room="natural">Natural &rarr;</a>
+    </div>
+    <div class="stones"></div>
+    <p class="note">Illustrative listings. The collection changes often; your advisor will share the stones available today, each with its grading report. <a class="link" href="lab-grown.html">See how a diamond is grown</a></p>
+  </section>
+
+  <dialog class="stone-dialog" id="stoneDialog" aria-labelledby="stoneTitle">
+    <button type="button" class="sd-x" data-f="x" aria-label="Close">&times;</button>
+    <div class="sd-view"><canvas tabindex="0" aria-label="360 degree view of the stone. Drag, or use the arrow keys, to turn it."></canvas><span class="sd-hint">Drag to turn</span></div>
+    <div class="sd-info">
+      <span class="label" data-f="kind"></span>
+      <h2 id="stoneTitle" data-f="title"></h2>
+      <dl></dl>
+      <div class="sd-actions"><a class="btn" data-f="ask" href="introduction.html">Request this stone</a><button type="button" data-f="close">Close</button></div>
+      <p class="note">Illustrative listing. Every stone is offered with its own grading report.</p>
+    </div>
+  </dialog>
+
+  <section>
+    <span class="label" data-reveal>Shapes we hold</span>
+    <h2 data-reveal style="--i:1">Each cut returns light in its own way.</h2>
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><linearGradient id="ice" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset=".55" stop-color="#f1ede6"/><stop offset="1" stop-color="#e2dccf"/></linearGradient></defs></svg>
+    <div class="shapes">
+      <div class="shape" data-reveal style="--i:0">
+        <svg viewBox="0 0 100 100" aria-hidden="true"><circle class="girdle" cx="50" cy="50" r="40"/><path class="facet" d="M90 50L68.5 57.7L78.3 78.3L57.7 68.5L50 90L42.3 68.5L21.7 78.3L31.5 57.7L10 50L31.5 42.3L21.7 21.7L42.3 31.5L50 10L57.7 31.5L78.3 21.7L68.5 42.3Z"/><path class="facet" d="M68.5 57.7L57.7 68.5L42.3 68.5L31.5 57.7L31.5 42.3L42.3 31.5L57.7 31.5L68.5 42.3Z"/><path class="glint" d="M72 18l2 7 7 2-7 2-2 7-2-7-7-2 7-2z"/></svg>
+        <h3>Round brilliant</h3><p>The most fire of any cut, and the shape against which all others are judged.</p>
+      </div>
+      <div class="shape" data-reveal style="--i:1">
+        <svg viewBox="0 0 100 100" aria-hidden="true"><ellipse class="girdle" cx="50" cy="50" rx="30" ry="42"/><path class="facet" vector-effect="non-scaling-stroke" transform="translate(50 50) scale(.75 1.05) translate(-50 -50)" d="M90 50L68.5 57.7L78.3 78.3L57.7 68.5L50 90L42.3 68.5L21.7 78.3L31.5 57.7L10 50L31.5 42.3L21.7 21.7L42.3 31.5L50 10L57.7 31.5L78.3 21.7L68.5 42.3Z"/><path class="glint" d="M70 16l2 7 7 2-7 2-2 7-2-7-7-2 7-2z"/></svg>
+        <h3>Oval</h3><p>A brilliant drawn long, so the stone looks larger for its weight.</p>
+      </div>
+      <div class="shape" data-reveal style="--i:2">
+        <svg viewBox="0 0 100 100" aria-hidden="true"><polygon class="girdle" points="28,8 72,8 88,24 88,76 72,92 28,92 12,76 12,24"/><polygon class="facet" points="33,21 67,21 75,29 75,71 67,79 33,79 25,71 25,29"/><polygon class="facet" points="38,33 62,33 63,35 63,65 62,67 38,67 37,65 37,35"/><path class="facet" d="M28 8L38 33M72 8L62 33M88 24L63 35M88 76L63 65M72 92L62 67M28 92L38 67M12 76L37 65M12 24L37 35"/><path class="glint" d="M74 14l2 7 7 2-7 2-2 7-2-7-7-2 7-2z"/></svg>
+        <h3>Emerald</h3><p>Long step facets that show a stone's clarity like a hall of mirrors.</p>
+      </div>
+      <div class="shape" data-reveal style="--i:3">
+        <svg viewBox="0 0 100 100" aria-hidden="true"><path class="girdle" d="M50 6C66 28 82 48 80 66C78 84 64 93 50 93C36 93 22 84 20 66C18 48 34 28 50 6Z"/><path class="facet" vector-effect="non-scaling-stroke" transform="translate(50 60) scale(.7 .8) translate(-50 -50)" d="M90 50L68.5 57.7L78.3 78.3L57.7 68.5L50 90L42.3 68.5L21.7 78.3L31.5 57.7L10 50L31.5 42.3L21.7 21.7L42.3 31.5L50 10L57.7 31.5L78.3 21.7L68.5 42.3Z"/><path class="facet" d="M50 6L50 28"/><path class="glint" d="M70 28l2 7 7 2-7 2-2 7-2-7-7-2 7-2z"/></svg>
+        <h3>Pear</h3><p>Half round, half marquise: a single point that leads the eye.</p>
+      </div>
+      <div class="shape" data-reveal style="--i:4">
+        <svg viewBox="0 0 100 100" aria-hidden="true"><rect class="girdle" x="11" y="11" width="78" height="78" rx="24"/><path class="facet" vector-effect="non-scaling-stroke" transform="translate(50 50) scale(.97) translate(-50 -50)" d="M90 50L68.5 57.7L78.3 78.3L57.7 68.5L50 90L42.3 68.5L21.7 78.3L31.5 57.7L10 50L31.5 42.3L21.7 21.7L42.3 31.5L50 10L57.7 31.5L78.3 21.7L68.5 42.3Z"/><rect class="facet" x="34" y="34" width="32" height="32" rx="8"/><path class="glint" d="M76 14l2 7 7 2-7 2-2 7-2-7-7-2 7-2z"/></svg>
+        <h3>Cushion</h3><p>Soft corners and broad facets that hold a warm, slow sparkle.</p>
+      </div>
+      <div class="shape" data-reveal style="--i:5">
+        <svg viewBox="0 0 100 100" aria-hidden="true"><path class="girdle" d="M50 4C78 28 78 72 50 96C22 72 22 28 50 4Z"/><path class="facet" vector-effect="non-scaling-stroke" transform="translate(50 50) scale(.56 1.1) translate(-50 -50)" d="M90 50L68.5 57.7L78.3 78.3L57.7 68.5L50 90L42.3 68.5L21.7 78.3L31.5 57.7L10 50L31.5 42.3L21.7 21.7L42.3 31.5L50 10L57.7 31.5L78.3 21.7L68.5 42.3Z"/><path class="glint" d="M66 14l2 7 7 2-7 2-2 7-2-7-7-2 7-2z"/></svg>
+        <h3>Marquise</h3><p>Pointed at both ends; the longest-looking stone for its carat weight.</p>
+      </div>
+    </div>
+    <p class="note">Shapes shown as drawings. Ask your advisor which stones are in the house today.</p>
+  </section>
+
+  <section>
+    <div class="split">
+      <div data-reveal>
+        <span class="label">With every stone</span>
+        <h2>Nothing is shown without its record.</h2>
+      </div>
+      <dl data-reveal style="--i:2">
+        <dt>Grading</dt><dd>Independent report</dd>
+        <dt>Origin</dt><dd>Natural or laboratory-grown, declared</dd>
+        <dt>Viewing</dt><dd>Private, by appointment</dd>
+        <dt>Advisor</dt><dd>One person, start to finish</dd>
+        <dt>Price</dt><dd class="gold">In private</dd>
+      </dl>
+    </div>
+  </section>
+
+  <section>
+    <span class="label" data-reveal>The private collection</span>
+    <h2 data-reveal style="--i:1">Holding an access code?</h2>
+    <form class="code" id="codeForm" data-reveal style="--i:2">
+      <label for="accessCode"><span class="label">Private access code</span>
+        <input id="accessCode" name="access_code" autocomplete="off" placeholder="Issued personally by the house">
+      </label>
+      <button type="submit">Enter</button>
+    </form>
+    <div class="msg" id="codeMsg" aria-live="polite"></div>
+  </section>
+
+  <section class="flush cta">
+    <span class="label" data-reveal>By introduction</span>
+    <h2 data-reveal style="--i:1">Tell us the stone you have in mind.</h2>
+    <a class="btn" href="introduction.html" data-reveal style="--i:2">Request an introduction</a>
+  </section>
+</main>
+
+<div class="wrap">
+  <footer>
+    <address><b>KRAJ IMPEX DIAMONDS</b> &middot; K RAJ IMPEX LLP<br>Office-B/408, RJD Business Hub, Nagina Wadi, Kasanagar, Katargam,<br>Surat, Gujarat, India &ndash; 395004 &middot; <a href="tel:+919820124336">+91 98201 24336</a></address>
+    <nav aria-label="Footer"><a href="collections.html">Collections</a><a href="lab-grown.html">Lab-grown</a><a href="craft.html">Craft</a><a href="house.html">The House</a><a href="introduction.html">Introduction</a></nav>
+    <span>Natural and laboratory-grown diamonds are always disclosed as such.</span>
+  </footer>
+</div>
+
+<script src="assets/js/main.js?v=10" defer></script>
+<script src="assets/js/three-kit.js?v=10" defer></script>
+<script src="assets/js/collection.js?v=10" defer></script>
+</body>
+</html>
