@@ -1,4 +1,4 @@
-# Kraj Impex Diamonds — website
+# Kraj Impex LLP Diamonds — website
 
 Static site: plain HTML, CSS and JavaScript. The 3D scenes use Three.js, loaded from the jsDelivr CDN. It is published with GitHub Pages at **https://krajimpex.github.io/**.
 
@@ -17,7 +17,7 @@ To preview on your computer, double-click `index.html`.
 | File | Page |
 |---|---|
 | `index.html` | Home: Koh-i-Noor hero, dossier, crystal tiles, **3D fancy-colour diamond cuff watch on a marble plinth**, collections, statement |
-| `collections.html` | "Kraj Impex Diamonds": Natural and Laboratory-grown collections (click to open; `#natural` / `#lab-grown`), 5 sample stones each with a 360° detail view, shapes, access code |
+| `collections.html` | "Kraj Impex LLP Diamonds": Natural and Laboratory-grown collections (click to open; `#natural` / `#lab-grown`), 5 sample stones each with a 360° detail view, shapes, access code |
 | `lab-grown.html` | **Scroll-driven 3D: how a diamond is grown (CVD), in 8 steps** |
 | `craft.html` | Brilliance / fire / scintillation, rough-to-record steps |
 | `house.html` | Vision, director, principles |

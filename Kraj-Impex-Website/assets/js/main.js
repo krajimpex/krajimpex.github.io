@@ -1,4 +1,4 @@
-/* Kraj Impex Diamonds — shared behaviour. No dependencies. */
+/* Kraj Impex LLP Diamonds — shared behaviour. No dependencies. */
 (function(){
   'use strict';
   var doc=document.documentElement;
