@@ -27,6 +27,9 @@ jobs:
         run: |
           node build.js
           touch dist/.nojekyll
+          # Jash Vaghani's personal site, served at /jash-vaghani/
+          mkdir -p dist/jash-vaghani
+          cp ../jash-vaghani/*.html dist/jash-vaghani/
           # 404.html uses root-relative links. A repo named <owner>.github.io is served at the domain root;
           # any other repo is served under /<repo>/, so the links need that prefix.
           repo="${{ github.event.repository.name }}"
